@@ -35,23 +35,6 @@ def displayer(start, end):
     plt.show()
 
 
-def find_bp(display):
-    data = mat73.loadmat(FILE)
-    z = data[DATA_NAME]
-    x = z[0][1]
-    bp = []
-    for i in range(60, 20000, 60):
-        if (max(x[i - 60: i]) > 90):
-            bp.append(max(x[i - 60: i]))
-    bp = np.array(bp)
-    if display:
-        x = np.linspace(1, 1000, num=len(bp)).reshape(-1, 1)
-        plt.scatter(x, bp, color = 'blue') 
-        plt.show()
-    print(len(bp))
-    return bp
-
-
 def derivative(display):
     data = mat73.loadmat(FILE)
     z = data[DATA_NAME]
@@ -126,7 +109,3 @@ def predicter():
     plt.ylabel('Systolic Blood Pressure')
     plt.show()
     
-#derivative(False)
-#find_bp(False)
-predicter()
-#derivative(True)
